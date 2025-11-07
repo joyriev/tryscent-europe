@@ -1,0 +1,22 @@
+<nav class="header__inline-menu">
+  <ul class="list-menu list-menu--inline w-full justify-between gap-4 !pl-3" role="list">
+    <li class="flex items-center">
+      {% comment%} <a
+        id="HeaderMenu-buy-3-get-1-free"
+        href="/pages/build-your-bundle"
+        class="bg-[linear-gradient(to_right,#226139,#26964F)] inline-block px-2 rounded no-underline text-white">
+        <span>Buy 2, Get 1 FREE</span>
+      </a> {%  endcomment%}
+    </li>
+    {% for link in linklists[section.settings.menu].links %}
+      <li>
+        <a
+          id="HeaderMenu-{{ link.handle }}"
+          href="{{ link.url }}"
+          class="header__menu-item list-menu__item link link--text focus-inset">
+          <span>{{ link.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
