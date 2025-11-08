@@ -424,6 +424,10 @@
     display: inline-block
 }
 
+.\!inline-block {
+    display: inline-block !important
+}
+
 .inline {
     display: inline
 }
@@ -597,6 +601,10 @@
     height: 100vh
 }
 
+.h-\[8px\] {
+    height: 8px
+}
+
 .\!w-10 {
     width: 40px !important
 }
@@ -663,6 +671,10 @@
 
 .w-screen {
     width: 100vw
+}
+
+.w-\[8px\] {
+    width: 8px
 }
 
 .min-w-\[1rem\] {
@@ -895,6 +907,10 @@
 
 .gap-8 {
     gap: 32px
+}
+
+.gap-\[5px\] {
+    gap: 5px
 }
 
 .gap-x-2 {
@@ -1341,6 +1357,11 @@
     background-color: rgb(255 255 255 / 0.4)
 }
 
+.bg-gray-300 {
+    --tw-bg-opacity: 1;
+    background-color: rgb(209 213 219 / var(--tw-bg-opacity, 1))
+}
+
 .bg-opacity-50 {
     --tw-bg-opacity: 0.5
 }
@@ -1632,6 +1653,10 @@
     padding-top: 32px
 }
 
+.pb-3 {
+    padding-bottom: 12px
+}
+
 .text-left {
     text-align: left
 }
@@ -1694,6 +1719,14 @@
 .text-xs {
     font-size: 12px;
     line-height: 16px
+}
+
+.text-\[22px\] {
+    font-size: 22px
+}
+
+.text-\[28px\] {
+    font-size: 28px
 }
 
 .\!font-black {
@@ -1771,6 +1804,10 @@
 
 .leading-tight {
     line-height: 1.25
+}
+
+.leading-4 {
+    line-height: 16px
 }
 
 .\!tracking-normal {
