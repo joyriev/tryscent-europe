@@ -5,19 +5,60 @@
 <div class="sticky top-6">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script defer src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-
-  <div class="flex">
-    <div id="productSwiper" class="swiper w-[calc(100%-112px)] md:w-[calc(100%-144px)]">
+  <div class="flex -mx-[15px] md:mx-0">
+    <div id="productSwiper" class="swiper md:w-[calc(100%-144px)]">
       <div class="swiper-wrapper">
-        {% for image in product.images %}
-          <img
-            src="{{ image.src | img_url: 'master' }}"
-            alt="{{ image.alt }}"
-            height="{{ image.height }}"
-            width="{{ image.width }}"
-            class="productSwiperImage swiper-slide rounded-lg">
-        {% endfor %}
+        {% if product.tags contains "Hide_Bundle" %}
+          {% assign image_found = false %}
+          {% for image in product.images %}
+            {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+            {% assign img_alt = image.alt | downcase %}
+            {% if img_alt contains "bundle_" and img_alt == curr_currency %}
+              {% assign image_found = true %}
+              <img
+                src="{{ image.src | img_url: 'master' }}"
+                alt="{{ image.alt }}"
+                height="{{ image.height }}"
+                width="{{ image.width }}"
+                class="productSwiperImage swiper-slide md:rounded-lg">
+            {% endif %}
+          {% endfor %}
+          {% if image_found == false %}
+            {% for image in product.images %}
+              {% assign img_alt = image.alt | downcase %}
+              {% if img_alt contains "bundle_usd" %}
+                <img
+                  src="{{ image.src | img_url: 'master' }}"
+                  alt="{{ image.alt }}"
+                  height="{{ image.height }}"
+                  width="{{ image.width }}"
+                  class="productSwiperImage swiper-slide md:rounded-lg">
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          {% for image in product.images offset: 1 %}
+            {% assign img_alt = image.alt | downcase %}
+            {% unless img_alt contains "bundle_" %}
+              <img
+                src="{{ image.src | image_url: width: 450 }}"
+                alt="{{ image.alt }}"
+                height="{{ image.height }}"
+                width="{{ image.width }}"
+                class="productSwiperImage swiper-slide md:rounded-lg">
+            {% endunless %}
+          {% endfor %}
+        {% else %}
+          {% for image in product.images %}
+            <img
+              src="{{ image.src | img_url: 'master' }}"
+              alt="{{ image.alt }}"
+              height="{{ image.height }}"
+              width="{{ image.width }}"
+              class="productSwiperImage swiper-slide md:rounded-lg">
+          {% endfor %}
+        {% endif %}
       </div>
+      <div class="swiper-pagination" id="productSwiperPagination"></div>
       <div
         data-text="text"
         id="productSwiperPrev"
@@ -27,7 +68,7 @@
         id="productSwiperNext"
         class="swiper-button-next !flex bg-white !w-10 [&]:after:!text-xl [&]:after:text-gray-900"></div>
     </div>
-    <div class="w-28 lg:w-36 pl-2 grid grid-rows-3 gap-2">
+    <div class="w-28 lg:w-36 pl-2 [display:none] md:grid grid-rows-3 gap-2">
       <div class="p-3 bg-[#EBF4EF] rounded-lg text-center flex flex-col items-center justify-center gap-2">
         <svg
           width="36"
@@ -56,7 +97,7 @@
             stroke="#226139"
             stroke-width="0.25" />
         </svg>
-        <p class="m-0 leading-snug font-semibold text-[#226139] text-xs lg:text-sm">Same Scent                                                     
+        <p class="m-0 leading-snug font-semibold text-[#226139] text-xs lg:text-sm">Same Scent                                                                                               
           Better Price</p>
       </div>
       <div class="p-2 lg:px-4 bg-[#EBF4EF] rounded-lg text-center flex flex-col items-center justify-center gap-2">
@@ -103,17 +144,63 @@
       </div>
     </div>
   </div>
-  <div id="productThumbnails" class="swiper mt-4">
-    <div class="swiper-wrapper [&>.swiper-slide-thumb-active]:border-[#226139] [&>.swiper-slide-thumb-active]:opacity-100">
-      {% for image in product.images %}
-        <img
-          id="slider-thumbnail-{{ forloop.index0 }}"
-          src="{{ image | image_url: width: 150, height: 150 }}"
-          alt="{{ image.alt }}"
-          height="150"
-          width="150"
-          class="productThumbnail swiper-slide slide max-w-20 md:max-w-28 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer" />
-      {% endfor %}
+  <div class="[display:none] md:block">
+    <div id="productThumbnails" class="swiper mt-4">
+      <div class="swiper-wrapper [&>.swiper-slide-thumb-active]:border-[#226139] [&>.swiper-slide-thumb-active]:opacity-100">
+        {% if product.tags contains "Hide_Bundle" %}
+          {% assign image_found = false %}
+          {% for image in product.images %}
+            {% assign curr_currency = localization.country.currency.iso_code | prepend: "bundle_" | downcase %}
+            {% assign img_alt = image.alt | downcase %}
+            {% if img_alt contains "bundle_" and img_alt == curr_currency %}
+              {% assign image_found = true %}
+              <img
+                id="slider-thumbnail-{{ forloop.index0 }}"
+                src="{{ image | image_url: width: 150, height: 150 }}"
+                alt="{{ image.alt }}"
+                height="150"
+                width="150"
+                class="productThumbnail swiper-slide slide max-w-20 md:max-w-28 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer" />
+            {% endif %}
+          {% endfor %}
+          {% if image_found == false %}
+            {% for image in product.images %}
+              {% assign img_alt = image.alt | downcase %}
+              {% if img_alt contains "bundle_usd" %}
+                <img
+                  id="slider-thumbnail-{{ forloop.index0 }}"
+                  src="{{ image | image_url: width: 150, height: 150 }}"
+                  alt="{{ image.alt }}"
+                  height="150"
+                  width="150"
+                  class="productThumbnail swiper-slide slide max-w-20 md:max-w-28 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer" />
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+          {% for image in product.images offset: 1 %}
+            {% assign img_alt = image.alt | downcase %}
+            {% unless img_alt contains "bundle_" %}
+              <img
+                id="slider-thumbnail-{{ forloop.index0 }}"
+                src="{{ image | image_url: width: 150, height: 150 }}"
+                alt="{{ image.alt }}"
+                height="150"
+                width="150"
+                class="productThumbnail swiper-slide slide max-w-20 md:max-w-28 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer" />
+            {% endunless %}
+          {% endfor %}
+        {% else %}
+          {% for image in product.images %}
+            <img
+              id="slider-thumbnail-{{ forloop.index0 }}"
+              src="{{ image | image_url: width: 150, height: 150 }}"
+              alt="{{ image.alt }}"
+              height="150"
+              width="150"
+              class="productThumbnail swiper-slide slide max-w-20 md:max-w-28 opacity-70 border-2 border-solid border-gray-200 rounded-lg cursor-pointer" />
+          {% endfor %}
+        {% endif %}
+      </div>
     </div>
   </div>
 
@@ -149,6 +236,10 @@
       navigation: {
         prevEl: "#productSwiperPrev",
         nextEl: "#productSwiperNext",
+      },
+      pagination: {
+        el: "#productSwiperPagination",
+        clickable: true,
       },
       thumbs: {
         swiper: productThumbnails
