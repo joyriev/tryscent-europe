@@ -33,7 +33,7 @@
             data-id="{{ section.id }}"
             style="display: flex !important;"
             class="grid product-grid grid--2-col-tablet-down grid--4-col-desktop">
-            {% comment %} {% render 'card-product-bogo' %} {% endcomment %}
+            {% render 'card-product-bogo' %}
             {% assign skip_card_product_styles = false %}
             {%- for product in collection.products limit: 7 -%}
               {% assign lazy_load = false %}
