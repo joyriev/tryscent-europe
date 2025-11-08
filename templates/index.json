@@ -180,7 +180,7 @@
           "type": "collection",
           "settings": {
             "tab_title": "Bestsellers",
-            "collection": "all"
+            "collection": "bestsellers"
           }
         },
         "collection_RN6cPc": {
