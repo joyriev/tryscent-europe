@@ -58,8 +58,13 @@
             "show_gift_card_recipient": true
           }
         },
+        "atc_bundle_builder_h9kwh9": {
+          "type": "atc_bundle_builder",
+          "settings": {}
+        },
         "reactive_variant_selector_JyFrkg": {
           "type": "reactive_variant_selector",
+          "disabled": true,
           "settings": {}
         },
         "shipping_text_HCVN8A": {
@@ -204,6 +209,7 @@
         "price",
         "quantity_selector",
         "buy_buttons",
+        "atc_bundle_builder_h9kwh9",
         "reactive_variant_selector_JyFrkg",
         "shipping_text_HCVN8A",
         "custom_liquid_G7fm64",
