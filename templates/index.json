@@ -67,6 +67,14 @@
       "disabled": true,
       "settings": {}
     },
+    "home_hero_banner_3yNLT6": {
+      "type": "home-hero-banner",
+      "disabled": true,
+      "name": "Home Hero Banner",
+      "settings": {
+        "link": ""
+      }
+    },
     "homepage_hero_GDeBtq": {
       "type": "homepage-hero",
       "name": "Homepage Hero",
@@ -562,6 +570,7 @@
   },
   "order": [
     "insta_story",
+    "home_hero_banner_3yNLT6",
     "homepage_hero_GDeBtq",
     "marquee_labels_RLdqpN",
     "magazine_reviews_AeDF9g",
