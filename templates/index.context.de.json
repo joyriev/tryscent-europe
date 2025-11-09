@@ -12,5 +12,14 @@
   "context": {
     "market": "de"
   },
-  "sections": {}
+  "sections": {
+    "home_hero_banner_3yNLT6": {
+      "settings": {
+        "image": "shopify://shop_images/GER_EURO_3.png",
+        "mobile_image": "shopify://shop_images/Mobile_Germany.png",
+        "link": "https://tryscent.eu/products/4-x-100ml-perfume-bottles"
+      },
+      "blocks": {}
+    }
+  }
 }
