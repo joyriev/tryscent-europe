@@ -69,7 +69,6 @@
     },
     "home_hero_banner_3yNLT6": {
       "type": "home-hero-banner",
-      "disabled": true,
       "name": "Home Hero Banner",
       "settings": {
         "image": "shopify://shop_images/ENGLISH_DESKTOP.png",
@@ -79,6 +78,7 @@
     },
     "homepage_hero_GDeBtq": {
       "type": "homepage-hero",
+      "disabled": true,
       "name": "Homepage Hero",
       "settings": {
         "background_color": "#121212",
