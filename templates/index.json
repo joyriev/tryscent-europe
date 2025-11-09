@@ -72,6 +72,8 @@
       "disabled": true,
       "name": "Home Hero Banner",
       "settings": {
+        "image": "shopify://shop_images/ENGLISH_DESKTOP.png",
+        "mobile_image": "shopify://shop_images/mobile_USD_1.png",
         "link": ""
       }
     },
