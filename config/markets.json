@@ -9,9 +9,6 @@
  */
 {
   "markets": {
-    "us": {
-      "parent": "@default"
-    },
     "de": {
       "parent": "@default"
     }
